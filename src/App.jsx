@@ -1,4 +1,7 @@
 import Hero from './components/Hero'
+import ThemeToggle from './components/ThemeToggle';
+import { ThemeProvider } from './context/ThemeContext';
+
 // import About from './components/About'
 // import Experience from './components/Experience'
 // import Contact from './components/Contact'
@@ -6,15 +9,18 @@ import Hero from './components/Hero'
 
 function App() {
     return (
-        <div className="bg-neutral-900 text-gray-400">
-            {/* <SideBar /> */}
-            <main className="lg:ml-96">
-                <Hero />
-                {/* <About />
-                <Experience />
-                <Contact /> */}
-            </main>
-        </div>
+        <ThemeProvider>
+            <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400 min-h-screen">
+                <ThemeToggle />
+                {/* <SideBar /> */}
+                <main className="lg:ml-96">
+                    <Hero />
+                    {/* <About />
+                    <Experience />
+                    <Contact /> */}
+                </main>
+            </div>
+        </ThemeProvider>
     )
 }
 

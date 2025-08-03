@@ -1,27 +1,41 @@
+import { useEffect } from 'react';
 import Hero from './components/Hero'
 import ThemeToggle from './components/ThemeToggle';
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
 
-// import About from './components/About'
-// import Experience from './components/Experience'
-// import Contact from './components/Contact'
-// import SideBar from './components/SideBar'
+function AppContent() {
+    const { isDark, toggleTheme } = useTheme();
+
+    let theme = isDark ? 'dark': '';
+    
+    useEffect(() => {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [theme]);
+
+    return (
+        <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400 min-h-screen">
+            <ThemeToggle />
+            {/* <SideBar /> */}
+            <main className="lg:ml-96">
+                <Hero />
+                {/* <About />
+                <Experience />
+                <Contact /> */}
+            </main>
+        </div>
+    );
+}
 
 function App() {
     return (
         <ThemeProvider>
-            <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400 min-h-screen">
-                <ThemeToggle />
-                {/* <SideBar /> */}
-                <main className="lg:ml-96">
-                    <Hero />
-                    {/* <About />
-                    <Experience />
-                    <Contact /> */}
-                </main>
-            </div>
+            <AppContent />
         </ThemeProvider>
-    )
+    );
 }
 
 export default App;

@@ -1,13 +1,14 @@
-import NavBar from './components/NavBar';
+import SideBar from './components/SideBar';
 import Hero from './components/Hero';
 
-function App () {
+export default function App() {
   return (
-    <div className="scroll-smooth">
-      <NavBar />
-      <Hero />
+    <div className="flex bg-[#0a192f] text-white">
+      <SideBar />
+      <main className="ml-64 w-full px-6">
+        <Hero />
+        {/* Add more sections: About, Experience, Projects */}
+      </main>
     </div>
   );
 }
-
-export default App;

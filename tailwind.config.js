@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}", // adjust if you use TypeScript
   ],
   theme: {
-    extend: {},
+  extend: {
+    colors: {
+      darkBlue: '#0a192f',
+      accent: '#64ffda',
+      lightText: '#ccd6f6',
+      },
+    },
   },
   plugins: [],
 };

@@ -12,7 +12,7 @@ function AppContent() {
         <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400 min-h-screen">
             <ThemeToggle />
             {/* <SideBar /> */}
-            <main className="lg:ml-96">
+            <main className="lg:ml-5">
                 <Hero />
                 <About />
                 {/* <Experience /> */}

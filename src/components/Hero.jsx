@@ -1,4 +1,5 @@
 import { useTheme } from '../context/ThemeContext';
+import avatarImage from '../assets/avatar.png';
 
 const Hero = () => {
     const { isDark } = useTheme();
@@ -9,8 +10,13 @@ const Hero = () => {
             className="min-h-screen flex items-left px-6 py-20 bg-white dark:bg-gray-900"
         >
             <div className="max-w-6xl w-full mx-auto flex flex-col md:flex-row gap-12">
-                {/* Left column */}
                 <div className="md:w-2/5 flex flex-col justify-center">
+                    <img
+                        src={avatarImage}
+                        alt="Profile"
+                        className="w-64 h-64 rounded-full object-cover mx-auto mb-6 border-4 border-gray-300 shadow-lg"
+                    />
+                {/* Left column */}
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-slate-200 mb-4">
                         Nayan Man Singh Pradhan
                     </h1>

@@ -13,11 +13,6 @@ const Hero = () => {
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-6">
                     I love building software!
                 </h2>
-                {/* <a
-                  href="#contact"
-                  className="inline-block border border-gray-700 dark:border-gray-300 text-gray-700 dark:text-gray-300 px-8 py-4 rounded hover:bg-gray-700/10 dark:hover:bg-gray-300/10 transition-colors">
-                    Get In Touch
-                  </a> */}
             </div>
         </section>
     )

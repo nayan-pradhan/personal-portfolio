@@ -23,9 +23,9 @@ const Hero = () => {
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
                         Software Engineer
                     </h2>
-                    <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                    {/* <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
                         I build software!
-                    </p>
+                    </p> */}
                 </div>
                 {/* Right column */}
                 <div className="md:w-3/5 flex flex-col justify-center">

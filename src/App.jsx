@@ -8,14 +8,6 @@ function AppContent() {
 
     let theme = isDark ? 'dark': '';
     
-    useEffect(() => {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [theme]);
-
     return (
         <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400 min-h-screen">
             <ThemeToggle />

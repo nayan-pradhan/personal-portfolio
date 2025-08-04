@@ -30,7 +30,7 @@ const Hero = () => {
                 {/* Right column */}
                 <div className="md:w-3/5 flex flex-col justify-center">
                     <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                        Hello world! I’m a developer passionate about robotics, artificial intelligence, and hardware-software integration.
+                        Hello world! I’m a software engineer passionate about robotics, artificial intelligence, and hardware-software integration.
                         <br /><br />
                         Currently, I’m focused on building modern web apps and learning new technologies. In my spare time, I enjoy playing basketball, trying new food, and exploring new places.
                     </p>

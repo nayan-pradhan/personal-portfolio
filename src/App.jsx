@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import Hero from './components/Hero'
+import Hero from './components/Hero';
+import About from './components/About';
 import ThemeToggle from './components/ThemeToggle';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 
@@ -14,9 +14,9 @@ function AppContent() {
             {/* <SideBar /> */}
             <main className="lg:ml-96">
                 <Hero />
-                {/* <About />
-                <Experience />
-                <Contact /> */}
+                <About />
+                {/* <Experience /> */}
+                {/* <Contact /> */}
             </main>
         </div>
     );

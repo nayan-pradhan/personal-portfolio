@@ -91,9 +91,31 @@ const Experience = () => {
         <section id="experience" ref={ref} className="py-20">
             <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 px-4 sm:px-6">
                 {/* Left: Header */}
-                <div className="md:w-1/3 flex justify-center md:justify-start mb-8 md:mb-0">
-                    <h2 className="text-3xl font-bold text-left md:text-right">Experience</h2>
-                </div>
+                <motion.div
+                    className="md:w-1/3 flex flex-col justify-center md:justify-start mb-8 md:mb-0"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                >
+                    <motion.button
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        className="mb-2 text-sm text-gray-400 hover:text-blue-500 transition-colors duration-200 font-semibold tracking-wide self-start md:self-end opacity-70 hover:opacity-100 focus:outline-none"
+                        aria-label="Go to Home"
+                        initial={false}
+                        animate={inView ? { opacity: 0.7, y: 0 } : { opacity: 0, y: 20 }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
+                    >
+                        Home
+                    </motion.button>
+                    <motion.h2
+                        className="text-3xl font-bold text-left md:text-right"
+                        initial={false}
+                        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                        transition={{ duration: 0.5, ease: 'easeOut' }}
+                    >
+                        Experience
+                    </motion.h2>
+                </motion.div>
                 {/* Right: Experience Cards with Timeline */}
                 <div className="relative md:w-2/3 flex flex-col gap-6">
                     {/* Vertical timeline bar */}

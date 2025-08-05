@@ -105,13 +105,19 @@ const Experience = () => {
                         <motion.div
                             key={exp.company}
                             variants={itemVariants}
+                            whileHover={{
+                                scale: 1.03,
+                                boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.15)",
+                                transition: { type: "spring", stiffness: 300 },
+                            }}
                             className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 flex items-center gap-4"
                         >
                             {exp.logo && (
                                 <img
                                     src={exp.logo}
                                     alt={`${exp.company} logo`}
-                                    className="w-16 h-16 object-contain rounded"
+                                    className="w-16 h-16 object-contain"
+                                    style={{ borderRadius: "10px" }}
                                 />
                             )}
                             <div>

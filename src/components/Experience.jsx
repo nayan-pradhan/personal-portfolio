@@ -3,8 +3,9 @@ import { motion, useInView } from "framer-motion";
 
 const experience = [
     {
-        url: "https://www.tesla.com",
         company: "Tesla",
+        url: "https://www.tesla.com",
+        logo: "/logos/tesla_motors_logo.jpeg",
         roles: [
             {
                 title: "Software Engineer, SCADA",
@@ -16,6 +17,7 @@ const experience = [
     {
         company: "planblue",
         url: "https://www.planblue.com",
+        logo: "/logos/planblue_logo.jpeg",
         roles: [
             {
                 title: "Junior Development Engineer",
@@ -27,6 +29,7 @@ const experience = [
     {
         company: "Max Planck Institute for Intelligent Systems",
         url: "https://www.is.mpg.de",
+        logo: "/logos/maxplanck_logo.jpeg",
         roles: [
             {
                 title: "Research Assistant",
@@ -38,6 +41,7 @@ const experience = [
     {
         company: "WasteAnt",
         url: "https://wasteant.com",
+        logo: "/logos/wasteant_gmbh_logo.jpeg",
         roles: [
             {
                 title: "Student Software Developer",
@@ -49,6 +53,7 @@ const experience = [
     {
         company: "Jacobs University Bremen",
         url: "https://www.jacobs-university.de",
+        logo: "/logos/jacobs_university_logo.jpeg",
         roles: [
             {
                 title: "Team Lead - RAMI Underwater Marine Robotics Competition",
@@ -100,24 +105,33 @@ const Experience = () => {
                         <motion.div
                             key={exp.company}
                             variants={itemVariants}
-                            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+                            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 flex items-center gap-4"
                         >
-                            <a
-                                href={exp.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xl font-semibold text-blue-600 hover:underline"
-                            >
-                                {exp.company}
-                            </a>
-                            <div className="mt-2 flex flex-col gap-4">
-                                {exp.roles.map((role, idx) => (
-                                    <div key={idx}>
-                                        <div className="font-medium">{role.title}</div>
-                                        <div className="text-gray-500 text-sm">{role.period}</div>
-                                        <div className="mt-1">{role.description}</div>
-                                    </div>
-                                ))}
+                            {exp.logo && (
+                                <img
+                                    src={exp.logo}
+                                    alt={`${exp.company} logo`}
+                                    className="w-16 h-16 object-contain rounded"
+                                />
+                            )}
+                            <div>
+                                <a
+                                    href={exp.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xl font-semibold text-blue-600 hover:underline"
+                                >
+                                    {exp.company}
+                                </a>
+                                <div className="mt-2 flex flex-col gap-4">
+                                    {exp.roles.map((role, idx) => (
+                                        <div key={idx}>
+                                            <div className="font-medium">{role.title}</div>
+                                            <div className="text-gray-500 text-sm">{role.period}</div>
+                                            <div className="mt-1">{role.description}</div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </motion.div>
                     ))}

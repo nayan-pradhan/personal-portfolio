@@ -22,7 +22,7 @@ const experience = [
             {
                 title: "Junior Development Engineer",
                 period: "2022 - 2023",
-                description: "Worked on ..",
+                description: `Built software for underwater satellites (C++/Python), including video streaming, multi-sensor integration and fusion, camera algorithms, GPS/GNSS and navigation stack, and MQTT - ROS2 communication.`
             }
         ]
     },
@@ -34,7 +34,7 @@ const experience = [
             {
                 title: "Research Assistant",
                 period: "2022 - 2022",
-                description: "Worked on ..",
+                description: `Developed real-time control, simulation, and motion planning software for a 6-DoF quadruped robot, contributing research, sensor integration, and open-source tools using Python and PyBullet.`,
             }
         ]
     },
@@ -46,7 +46,7 @@ const experience = [
             {
                 title: "Student Software Developer",
                 period: "2021 - 2022",
-                description: "Worked on ..",
+                description: `Built ROS-based computer vision and ML systems for waste quality assessment, including LSTM prediction, relay control, and node recovery frameworks in Python.`,
             }
         ]
     }, 
@@ -55,15 +55,15 @@ const experience = [
         url: "https://www.jacobs-university.de",
         logo: "/logos/jacobs_university_logo.jpeg",
         roles: [
+            // {
+            //     title: "Team Lead - RAMI Underwater Marine Robotics Competition",
+            //     period: "2022 - 2022",
+            //     description: `Led a 10-member team in the 2022 RAMI Underwater Robotics Competition, developing autonomous navigation and vision-based mission software (ROS, Python/C++, OpenCV) for the BlueROV2 — winning 3 awards.`,
+            // },
             {
-                title: "Team Lead - RAMI Underwater Marine Robotics Competition",
-                period: "2022 - 2022",
-                description: "Worked on ..",
-            },
-            {
-                title: "Research & Teaching Assistant",
+                title: "Team Lead, Research & Teaching Assistant",
                 period: "2020- 2022",
-                description: "Worked on ..",
+                description: `Developed software and hardware for underwater and planetary robotics systems (BlueROV2, DuckieBots, ESA Spherical Robot) using ROS, Python/C++, and OpenCV, contributing to research, teaching, and a team effort that earned awards at the 2022 RAMI Underwater Robotics Competition.`
             }
         ]
     },
@@ -134,7 +134,7 @@ const Experience = () => {
                                         <div key={idx}>
                                             <div className="font-medium">{role.title}</div>
                                             <div className="text-gray-500 text-sm">{role.period}</div>
-                                            <div className="mt-1">{role.description}</div>
+                                            <div className="mt-1 whitespace-pre-line">{role.description}</div>
                                         </div>
                                     ))}
                                 </div>

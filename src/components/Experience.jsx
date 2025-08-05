@@ -79,36 +79,43 @@ const Experience = () => {
 
     return (
         <section id="experience" ref={ref} className="py-20">
-            <h2 className="text-3xl font-bold mb-10 text-center">Experience</h2>
-            <div className="max-w-3xl mx-auto flex flex-col gap-8">
-                {experience.map((exp, i) => (
-                    <motion.div
-                        key={exp.company}
-                        custom={i}
-                        initial="hidden"
-                        animate={inView ? "visible" : "hidden"}
-                        variants={itemVariants}
-                        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
-                    >
-                        <a
-                            href={exp.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xl font-semibold text-blue-600 hover:underline"
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
+                {/* Left: Header */}
+                <div className="md:w-1/3 flex items justify-center md:justify-start mb-8 md:mb-0">
+                    <h2 className="text-3xl font-bold text-left md:text-right">Experience</h2>
+                </div>
+                {/* Right: Experience Cards */}
+                <div className="md:w-2/3 flex flex-col gap-8">
+                    {experience.map((exp, i) => (
+                        <motion.div
+                            key={exp.company}
+                            custom={i}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={itemVariants}
+                            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
                         >
-                            {exp.company}
-                        </a>
-                        <div className="mt-2 flex flex-col gap-4">
-                            {exp.roles.map((role, idx) => (
-                                <div key={idx}>
-                                    <div className="font-medium">{role.title}</div>
-                                    <div className="text-gray-500 text-sm">{role.period}</div>
-                                    <div className="mt-1">{role.description}</div>
-                                </div>
-                            ))}
-                        </div>
-                    </motion.div>
-                ))}
+                            <a
+                                href={exp.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xl font-semibold text-blue-600 hover:underline"
+                            >
+                                {exp.company}
+                            </a>
+                            <div className="mt-2 flex flex-col gap-4">
+                                {exp.roles.map((role, idx) => (
+                                    <div key={idx}>
+                                        <div className="font-medium">{role.title}</div>
+                                        <div className="text-gray-500 text-sm">{role.period}</div>
+                                        <div className="mt-1">{role.description}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
         </section>
     );

@@ -10,7 +10,7 @@ const experience = [
             {
                 title: "Software Engineer, SCADA",
                 period: "2023 - Present",
-                description: "Worked on ..",
+                description: "Working on global SCADA software used for manufacturing. Working on software and architecture for data collection from robots and PLCs via OPC UA protocol, data tranmission, processing, and storage via kafka, APIs, and internal tools, and data visualization to track KPIs.",
             }
         ]
     },
@@ -63,7 +63,7 @@ const experience = [
             {
                 title: "Team Lead, Research & Teaching Assistant",
                 period: "2020- 2022",
-                description: `Developed software and hardware for underwater and planetary robotics systems (BlueROV2, DuckieBots, ESA Spherical Robot) using ROS, Python/C++, and OpenCV, contributing to research, teaching, and a team effort that earned awards at the 2022 RAMI Underwater Robotics Competition.`
+                description: `Developed software and hardware for robotic systems (BlueROV2, DuckieBots, ESA Spherical Robot) using ROS, Python/C++, and OpenCV, contributing to research, teaching, and leading a team effort that earned awards at the 2022 RAMI Underwater Robotics Competition.`
             }
         ]
     },
@@ -89,59 +89,65 @@ const Experience = () => {
 
     return (
         <section id="experience" ref={ref} className="py-20">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 px-4 sm:px-6">
                 {/* Left: Header */}
                 <div className="md:w-1/3 flex justify-center md:justify-start mb-8 md:mb-0">
                     <h2 className="text-3xl font-bold text-left md:text-right">Experience</h2>
                 </div>
-                {/* Right: Experience Cards */}
-                <motion.div
-                    className="md:w-2/3 flex flex-col gap-8"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate={inView ? "visible" : "hidden"}
-                >
-                    {experience.map((exp, i) => (
-                        <motion.div
-                            key={exp.company}
-                            variants={itemVariants}
-                            whileHover={{
-                                scale: 1.03,
-                                boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.15)",
-                                transition: { type: "spring", stiffness: 300 },
-                            }}
-                            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 flex items-center gap-4"
-                        >
-                            {exp.logo && (
-                                <img
-                                    src={exp.logo}
-                                    alt={`${exp.company} logo`}
-                                    className="w-16 h-16 object-contain"
-                                    style={{ borderRadius: "10px" }}
-                                />
-                            )}
-                            <div>
-                                <a
-                                    href={exp.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-xl font-semibold text-blue-600 hover:underline"
-                                >
-                                    {exp.company}
-                                </a>
-                                <div className="mt-2 flex flex-col gap-4">
+                {/* Right: Experience Cards with Timeline */}
+                <div className="relative md:w-2/3 flex flex-col gap-12">
+                    {/* Vertical timeline bar */}
+                    <div className="hidden md:block absolute left-4 top-0 h-full w-1 bg-gradient-to-b from-blue-200 via-blue-400 to-blue-200 dark:from-blue-900 dark:via-blue-700 dark:to-blue-900 rounded-full opacity-60 z-0"></div>
+                    <motion.div
+                        className="flex flex-col gap-12 relative z-10"
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate={inView ? "visible" : "hidden"}
+                    >
+                        {experience.map((exp, i) => (
+                            <motion.div
+                                key={exp.company}
+                                variants={itemVariants}
+                                whileHover={{
+                                    scale: 1.04,
+                                    boxShadow: "0 12px 32px 0 rgba(31, 38, 135, 0.18)",
+                                    transition: { type: "tween", duration: 0.18, ease: "linear" },
+                                }}
+                                className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-7 flex items-start gap-6 border border-gray-200 dark:border-gray-700 transition-all duration-300"
+                            >
+                                {/* Logo (no circle) */}
+                                {exp.logo && (
+                                    <img
+                                        src={exp.logo}
+                                        alt={`${exp.company} logo`}
+                                        className="flex-shrink-0 w-16 h-16 object-contain"
+                                        style={{ borderRadius: "8px" }}
+                                    />
+                                )}
+                                <div className="flex-1">
+                                    <a
+                                        href={exp.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-xl font-bold text-blue-700 dark:text-blue-400 hover:underline"
+                                    >
+                                        {exp.company}
+                                    </a>
+                                    {/* Multiple roles per company */}
                                     {exp.roles.map((role, idx) => (
-                                        <div key={idx}>
-                                            <div className="font-medium">{role.title}</div>
-                                            <div className="text-gray-500 text-sm">{role.period}</div>
-                                            <div className="mt-1 whitespace-pre-line">{role.description}</div>
+                                        <div key={idx} className={idx > 0 ? "mt-4 pt-4 border-t border-blue-100 dark:border-gray-700" : "mt-1"}>
+                                            <div className="font-semibold text-gray-700 dark:text-gray-200 text-base">{role.title}</div>
+                                            <div className="text-gray-500 dark:text-gray-400 text-sm mb-2">{role.period}</div>
+                                            <div className="whitespace-pre-line text-gray-800 dark:text-gray-300 text-[15px] leading-relaxed">
+                                                {role.description}
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </motion.div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

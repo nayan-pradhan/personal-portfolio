@@ -95,7 +95,7 @@ const Experience = () => {
                     <h2 className="text-3xl font-bold text-left md:text-right">Experience</h2>
                 </div>
                 {/* Right: Experience Cards with Timeline */}
-                <div className="relative md:w-2/3 flex flex-col gap-12">
+                <div className="relative md:w-2/3 flex flex-col gap-6">
                     {/* Vertical timeline bar */}
                     <div className="hidden md:block absolute left-4 top-0 h-full w-1 bg-gradient-to-b from-blue-200 via-blue-400 to-blue-200 dark:from-blue-900 dark:via-blue-700 dark:to-blue-900 rounded-full opacity-60 z-0"></div>
                     <motion.div
@@ -113,7 +113,7 @@ const Experience = () => {
                                     boxShadow: "0 12px 32px 0 rgba(31, 38, 135, 0.18)",
                                     transition: { type: "tween", duration: 0.18, ease: "linear" },
                                 }}
-                                className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-7 flex items-start gap-6 border border-gray-200 dark:border-gray-700 transition-all duration-300"
+                                className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 flex items-start gap-4 border border-gray-200 dark:border-gray-700 transition-all duration-300"
                             >
                                 {/* Logo (no circle) */}
                                 {exp.logo && (

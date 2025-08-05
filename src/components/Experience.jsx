@@ -10,7 +10,7 @@ const experience = [
             {
                 title: "Software Engineer, SCADA",
                 period: "2023 - Present",
-                description: "Working on global SCADA software used for manufacturing. Working on software and architecture for data collection from robots and PLCs via OPC UA protocol, data tranmission, processing, and storage via kafka, APIs, and internal tools, and data visualization to track KPIs.",
+                description: "Working on global SCADA software used for manufacturing. Working on software and architecture for data collection from robots and PLCs via OPC UA protocol, data tranmission, processing, and storage via Kafka, APIs, and internal tools, and data visualization to track KPIs.",
             }
         ]
     },

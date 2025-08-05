@@ -1,5 +1,6 @@
 import Hero from './components/Hero';
 import About from './components/About';
+import Experience from './components/Experience';
 import ThemeToggle from './components/ThemeToggle';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 
@@ -14,8 +15,8 @@ function AppContent() {
             {/* <SideBar /> */}
             <main className="lg:ml-5">
                 <Hero />
-                <About />
-                {/* <Experience /> */}
+                {/* <About /> */}
+                <Experience />
                 {/* <Contact /> */}
             </main>
         </div>

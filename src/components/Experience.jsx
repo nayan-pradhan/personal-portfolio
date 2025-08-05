@@ -34,6 +34,17 @@ const experience = [
         ]
     },
     {
+        company: "WasteAnt",
+        url: "https://wasteant.com",
+        roles: [
+            {
+                title: "Student Software Developer",
+                period: "2021 - 2022",
+                description: "Worked on ..",
+            }
+        ]
+    }, 
+    {
         company: "Jacobs University Bremen",
         url: "https://www.jacobs-university.de",
         roles: [

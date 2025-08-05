@@ -64,35 +64,41 @@ const experience = [
     },
 ];
 
+const containerVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            staggerChildren: 0.2,
+        },
+    },
+};
+
 const itemVariants = {
     hidden: { opacity: 0, y: 40 },
-    visible: (i) => ({
-        opacity: 1,
-        y: 0,
-        transition: { delay: i * 0.3 },
-    }),
+    visible: { opacity: 1, y: 0 },
 };
 
 const Experience = () => {
     const ref = useRef(null);
-    const inView = useInView(ref, { once: true });
+    const inView = useInView(ref, { once: true , amount: 0.5});
 
     return (
         <section id="experience" ref={ref} className="py-20">
             <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8">
                 {/* Left: Header */}
-                <div className="md:w-1/3 flex items justify-center md:justify-start mb-8 md:mb-0">
+                <div className="md:w-1/3 flex justify-center md:justify-start mb-8 md:mb-0">
                     <h2 className="text-3xl font-bold text-left md:text-right">Experience</h2>
                 </div>
                 {/* Right: Experience Cards */}
-                <div className="md:w-2/3 flex flex-col gap-8">
+                <motion.div
+                    className="md:w-2/3 flex flex-col gap-8"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
+                >
                     {experience.map((exp, i) => (
                         <motion.div
                             key={exp.company}
-                            custom={i}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.3 }}
                             variants={itemVariants}
                             className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
                         >
@@ -115,7 +121,7 @@ const Experience = () => {
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

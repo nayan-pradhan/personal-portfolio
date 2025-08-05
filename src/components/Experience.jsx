@@ -1,5 +1,5 @@
-import { useRef, useEffect } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const experience = [
     {
@@ -65,35 +65,28 @@ const experience = [
 ];
 
 const itemVariants = {
-    hidden: { opacity:0, y:40 },
+    hidden: { opacity: 0, y: 40 },
     visible: (i) => ({
         opacity: 1,
         y: 0,
-        transition: {delay: i* 0.3 },
+        transition: { delay: i * 0.3 },
     }),
 };
 
 const Experience = () => {
     const ref = useRef(null);
     const inView = useInView(ref, { once: true });
-    const controls = useAnimation();
-
-    useEffect(() => {
-        if (inView) {
-            controls.start("visible");
-        }
-    }, [inView, controls]);
 
     return (
         <section id="experience" ref={ref} className="py-20">
-            <h2 className="text-3xl font-bold mb-10 text-center">Experience</h2> 
+            <h2 className="text-3xl font-bold mb-10 text-center">Experience</h2>
             <div className="max-w-3xl mx-auto flex flex-col gap-8">
                 {experience.map((exp, i) => (
                     <motion.div
                         key={exp.company}
                         custom={i}
                         initial="hidden"
-                        animate={controls}
+                        animate={inView ? "visible" : "hidden"}
                         variants={itemVariants}
                         className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
                     >
@@ -118,7 +111,7 @@ const Experience = () => {
                 ))}
             </div>
         </section>
-    )
-}
+    );
+};
 
 export default Experience;

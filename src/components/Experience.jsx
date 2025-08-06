@@ -85,7 +85,7 @@ const itemVariants = {
 
 const Experience = () => {
     const ref = useRef(null);
-    const inView = useInView(ref, { once: true, amount: 0.2 });
+    const inView = useInView(ref, { once: true, amount: 0.15 });
 
     return (
         <section id="experience" ref={ref} className="py-20">

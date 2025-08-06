@@ -80,20 +80,26 @@ const containerVariants = {
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 0 },
+    hidden: { 
+        opacity: 0, 
+        y: 0
+    },
     visible: { 
         opacity: 1, 
         y: 0,
-        // transition: {
-        //     duration: 0.5,
-        //     ease: 'easeOut'
-        // }
+        transition: {
+            duration: 0.4,
+            ease: 'easeOut'
+        }
     },
 };
 
 const Experience = () => {
     const ref = useRef(null);
-    const inView = useInView(ref, { once: true, amount: 0.15 });
+    const inView = useInView(ref, { 
+        once: true, 
+        amount: window.innerWidth < 768 ? 0.05 : 0.15 
+    });
 
     return (
         <section id="experience" ref={ref} className="py-20">
@@ -104,6 +110,7 @@ const Experience = () => {
                     initial={{ opacity: 0, y: 40 }}
                     animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
                     transition={{ duration: 0.6, ease: 'easeOut' }}
+                    style={{ willChange: 'transform, opacity' }}
                 >
                     <button
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -125,6 +132,7 @@ const Experience = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate={inView ? "visible" : "hidden"}
+                        style={{ willChange: 'transform, opacity' }}
                     >
                         {experience.map((exp, i) => (
                             <motion.div

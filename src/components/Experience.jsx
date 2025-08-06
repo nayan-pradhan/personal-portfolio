@@ -74,7 +74,7 @@ const containerVariants = {
     visible: {
         transition: {
             staggerChildren: 0.15,
-            delayChildren: 0.1,
+            delayChildren: 0.3,
         },
     },
 };
@@ -125,7 +125,6 @@ const Experience = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate={inView ? "visible" : "hidden"}
-                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
                     >
                         {experience.map((exp, i) => (
                             <motion.div

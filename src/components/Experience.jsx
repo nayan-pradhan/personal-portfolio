@@ -5,7 +5,7 @@ const experience = [
     {
         company: "Tesla",
         url: "https://www.tesla.com",
-        logo: "/logos/tesla_motors_logo.jpeg",
+        logo: "/personal-portfolio/logos/tesla_motors_logo.jpeg",
         roles: [
             {
                 title: "Software Engineer, SCADA",
@@ -17,7 +17,7 @@ const experience = [
     {
         company: "planblue",
         url: "https://www.planblue.com",
-        logo: "/logos/planblue_logo.jpeg",
+        logo: "/personal-portfolio/logos/planblue_logo.jpeg",
         roles: [
             {
                 title: "Junior Development Engineer",
@@ -29,7 +29,7 @@ const experience = [
     {
         company: "Max Planck Institute for Intelligent Systems",
         url: "https://www.is.mpg.de",
-        logo: "/logos/maxplanck_logo.jpeg",
+        logo: "/personal-portfolio/logos/maxplanck_logo.jpeg",
         roles: [
             {
                 title: "Research Assistant",
@@ -41,7 +41,7 @@ const experience = [
     {
         company: "WasteAnt",
         url: "https://wasteant.com",
-        logo: "/logos/wasteant_gmbh_logo.jpeg",
+        logo: "/personal-portfolio/logos/wasteant_gmbh_logo.jpeg",
         roles: [
             {
                 title: "Student Software Developer",
@@ -53,7 +53,7 @@ const experience = [
     {
         company: "Jacobs University Bremen",
         url: "https://www.jacobs-university.de",
-        logo: "/logos/jacobs_university_logo.jpeg",
+        logo: "/personal-portfolio/logos/jacobs_university_logo.jpeg",
         roles: [
             // {
             //     title: "Team Lead - RAMI Underwater Marine Robotics Competition",
@@ -85,7 +85,7 @@ const itemVariants = {
 
 const Experience = () => {
     const ref = useRef(null);
-    const inView = useInView(ref, { once: true , amount: 0.5});
+    const inView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
         <section id="experience" ref={ref} className="py-20">

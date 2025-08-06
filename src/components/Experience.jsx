@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 
 const experience = [
@@ -96,10 +96,37 @@ const itemVariants = {
 
 const Experience = () => {
     const ref = useRef(null);
+    const [isMobile, setIsMobile] = useState(false);
+    
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+    
     const inView = useInView(ref, { 
         once: true, 
-        amount: window.innerWidth < 768 ? 0.05 : 0.15 
+        amount: isMobile ? 0.05 : 0.15 
     });
+
+    // No animations on mobile to prevent double render
+    const mobileContainerVariants = {
+        hidden: {},
+        visible: {},
+    };
+
+    const mobileItemVariants = {
+        hidden: { opacity: 1 },
+        visible: { opacity: 1 },
+    };
+
+    const currentContainerVariants = isMobile ? mobileContainerVariants : containerVariants;
+    const currentItemVariants = isMobile ? mobileItemVariants : itemVariants;
 
     return (
         <section id="experience" ref={ref} className="py-20">
@@ -107,9 +134,9 @@ const Experience = () => {
                 {/* Left: Header */}
                 <motion.div
                     className="md:w-1/3 flex flex-col justify-center md:justify-start mb-8 md:mb-0"
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                    animate={isMobile ? { opacity: 1, y: 0 } : (inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 })}
+                    transition={isMobile ? {} : { duration: 0.6, ease: 'easeOut' }}
                     style={{ willChange: 'transform, opacity' }}
                 >
                     <button
@@ -129,7 +156,7 @@ const Experience = () => {
                     <div className="hidden md:block absolute left-4 top-0 h-full w-1 bg-gradient-to-b from-blue-200 via-blue-400 to-blue-200 dark:from-blue-900 dark:via-blue-700 dark:to-blue-900 rounded-full opacity-60 z-0"></div>
                     <motion.div
                         className="flex flex-col gap-12 relative z-10"
-                        variants={containerVariants}
+                        variants={currentContainerVariants}
                         initial="hidden"
                         animate={inView ? "visible" : "hidden"}
                         style={{ willChange: 'transform, opacity' }}
@@ -137,8 +164,8 @@ const Experience = () => {
                         {experience.map((exp, i) => (
                             <motion.div
                                 key={exp.company}
-                                variants={itemVariants}
-                                whileHover={{
+                                variants={currentItemVariants}
+                                whileHover={isMobile ? {} : {
                                     scale: 1.04,
                                     boxShadow: "0 12px 32px 0 rgba(31, 38, 135, 0.18)",
                                     transition: { type: "tween", duration: 0.18, ease: "linear" },

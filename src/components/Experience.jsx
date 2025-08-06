@@ -73,14 +73,22 @@ const containerVariants = {
     hidden: {},
     visible: {
         transition: {
-            staggerChildren: 0.2,
+            staggerChildren: 0.15,
+            delayChildren: 0.1,
         },
     },
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+        opacity: 1, 
+        y: 0,
+        transition: {
+            duration: 0.5,
+            ease: 'easeOut'
+        }
+    },
 };
 
 const Experience = () => {
@@ -95,26 +103,18 @@ const Experience = () => {
                     className="md:w-1/3 flex flex-col justify-center md:justify-start mb-8 md:mb-0"
                     initial={{ opacity: 0, y: 40 }}
                     animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                    <motion.button
+                    <button
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                         className="mb-2 text-sm text-gray-400 hover:text-blue-500 transition-colors duration-200 font-semibold tracking-wide self-start md:self-end opacity-70 hover:opacity-100 focus:outline-none"
                         aria-label="Go to Home"
-                        initial={false}
-                        animate={inView ? { opacity: 0.7, y: 0 } : { opacity: 0, y: 20 }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
                     >
                         Home
-                    </motion.button>
-                    <motion.h2
-                        className="text-3xl font-bold text-left md:text-right"
-                        initial={false}
-                        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
-                    >
+                    </button>
+                    <h2 className="text-3xl font-bold text-left md:text-right">
                         Experience
-                    </motion.h2>
+                    </h2>
                 </motion.div>
                 {/* Right: Experience Cards with Timeline */}
                 <div className="relative md:w-2/3 flex flex-col gap-6">
@@ -125,6 +125,7 @@ const Experience = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate={inView ? "visible" : "hidden"}
+                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
                     >
                         {experience.map((exp, i) => (
                             <motion.div

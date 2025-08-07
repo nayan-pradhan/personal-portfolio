@@ -1,5 +1,6 @@
 import Hero from './components/Hero';
 import Experience from './components/Experience';
+import Projects from './components/Projects';
 import ThemeToggle from './components/ThemeToggle';
 import SocialLinks from './components/SocialLinks';
 import Footer from './components/Footer';
@@ -17,7 +18,7 @@ function AppContent() {
             <main className="lg:ml-5">
                 <Hero />
                 <Experience />
-                {/* <Contact /> */}
+                <Projects />
             </main>
             <Footer />
         </div>

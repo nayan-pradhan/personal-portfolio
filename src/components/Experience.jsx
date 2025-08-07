@@ -139,13 +139,6 @@ const Experience = () => {
                     transition={isMobile ? {} : { duration: 0.6, ease: 'easeOut' }}
                     style={{ willChange: 'transform, opacity' }}
                 >
-                    <button
-                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        className="mb-2 text-sm text-gray-400 hover:text-blue-500 transition-colors duration-200 font-semibold tracking-wide self-start md:self-end opacity-70 hover:opacity-100 focus:outline-none"
-                        aria-label="Go to Home"
-                    >
-                        Home
-                    </button>
                     <h2 className="text-3xl font-bold text-left md:text-right">
                         Experience
                     </h2>

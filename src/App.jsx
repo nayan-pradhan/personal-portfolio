@@ -1,6 +1,7 @@
 import Hero from './components/Hero';
 import Experience from './components/Experience';
 import ThemeToggle from './components/ThemeToggle';
+import SocialLinks from './components/SocialLinks';
 import Footer from './components/Footer';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 
@@ -11,6 +12,7 @@ function AppContent() {
     
     return (
         <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400 min-h-screen">
+            <SocialLinks />
             <ThemeToggle />
             <main className="lg:ml-5">
                 <Hero />

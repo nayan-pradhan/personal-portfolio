@@ -1,6 +1,7 @@
 import Hero from './components/Hero';
 import Experience from './components/Experience';
 import ThemeToggle from './components/ThemeToggle';
+import Footer from './components/Footer';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 
 function AppContent() {
@@ -16,6 +17,7 @@ function AppContent() {
                 <Experience />
                 {/* <Contact /> */}
             </main>
+            <Footer />
         </div>
     );
 }

@@ -55,17 +55,17 @@ const Navigation = () => {
 
     return (
         <motion.div
-            className={`fixed top-6 right-1/2 transform translate-x-1/2 z-50 transition-all duration-300`}
+            className={`fixed bottom-6 md:top-6 md:bottom-auto right-1/2 transform translate-x-1/2 z-50 transition-all duration-300`}
         >
-            <nav className='flex gap-3 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-full shadow-lg border border-gray-200/50 dark:border-gray-700/50 px-4 py-2'>
+            <nav className='flex gap-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-full shadow-lg border border-gray-200/50 dark:border-gray-700/50 p-1'>
                 {navItems.map((item) => (
                     <motion.button
                         key={item.id}
                         onClick={() => scrollToSection(item.id)}
-                        className={`px-4 py-1 rounded-full transition-all duration-300 shadow-lg hover:scale-105 text-sm font-medium ${
+                        className={`px-4 py-2 rounded-full transition-all duration-300 text-sm font-medium ${
                             activeSection === item.id
                                 ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900'
-                                : 'bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700'
+                                : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
                         }`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}

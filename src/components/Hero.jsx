@@ -9,7 +9,7 @@ const Hero = () => {
             id="hero"
             className="min-h-screen flex items-left px-6 py-20 pb-24 md:pb-20 bg-white dark:bg-gray-900"
         >
-            <div className="max-w-6xl w-full mx-auto flex flex-col md:flex-row gap-6 md:gap-12">
+            <div className="max-w-6xl w-full mx-auto flex flex-col md:flex-row gap-12">
                 <div className="md:w-2/5 flex flex-col justify-center">
                     <img
                         src={avatarImage}
@@ -20,7 +20,7 @@ const Hero = () => {
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-slate-200 mb-4">
                         Nayan Man Singh Pradhan
                     </h1>
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-0 md:mb-4">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
                         Software Engineer
                     </h2>
                 </div>

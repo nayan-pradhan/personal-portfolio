@@ -55,7 +55,9 @@ const Navigation = () => {
 
     return (
         <motion.div
-            className={`fixed bottom-6 md:top-6 md:bottom-auto right-1/2 transform translate-x-1/2 z-50 transition-all duration-300`}
+            className={`fixed bottom-6 md:top-6 md:bottom-auto right-1/2 transform translate-x-1/2 z-50 transition-all duration-500 ${
+                !isScrolled ? 'opacity-0 translate-y-4 md:opacity-100 md:translate-y-0 pointer-events-none md:pointer-events-auto' : 'opacity-100 translate-y-0 pointer-events-auto'
+            }`}
         >
             <nav className='flex gap-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-md rounded-full shadow-lg border border-gray-200/50 dark:border-gray-700/50 p-1'>
                 {navItems.map((item) => (

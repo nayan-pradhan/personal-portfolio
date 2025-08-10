@@ -1,6 +1,7 @@
 import Hero from './components/Hero';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
+import Navigation from './components/Navigation';
 import ThemeToggle from './components/ThemeToggle';
 import SocialLinks from './components/SocialLinks';
 import Footer from './components/Footer';
@@ -13,6 +14,7 @@ function AppContent() {
     
     return (
         <div className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-400 min-h-screen">
+            <Navigation />
             <SocialLinks />
             <ThemeToggle />
             <main className="lg:ml-5">

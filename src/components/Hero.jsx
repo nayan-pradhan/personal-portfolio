@@ -21,7 +21,7 @@ const Hero = () => {
                         Nayan Man Singh Pradhan
                     </h1>
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300 mb-4">
-                        Software Engineer
+                        Sr. Software Engineer
                     </h2>
                 </div>
                 {/* Right column */}

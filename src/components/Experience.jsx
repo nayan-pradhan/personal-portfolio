@@ -8,9 +8,14 @@ const experience = [
         logo: "/personal-portfolio/logos/tesla_motors_logo.jpeg",
         roles: [
             {
-                title: "Software Engineer, SCADA",
-                period: "2023 - Present",
+                title: "Sr. Software Engineer, SCADA",
+                period: "2025 - Present",
                 description: "Contributing to the development of global SCADA software for manufacturing environments. Focused on designing and implementing software architecture for reliable data collection from robots and PLCs using the OPC UA protocol, along with data transmission, processing, and storage leveraging Kafka, APIs, and internal platforms. Also involved in building data visualization tools to monitor and analyze key performance indicators (KPIs)."
+            },
+            {
+                title: "Software Engineer, SCADA",
+                period: "2023 - 2025",
+                // description: "Contributing to the development of global SCADA software for manufacturing environments. Focused on designing and implementing software architecture for reliable data collection from robots and PLCs using the OPC UA protocol, along with data transmission, processing, and storage leveraging Kafka, APIs, and internal platforms. Also involved in building data visualization tools to monitor and analyze key performance indicators (KPIs)."
             }
         ]
     },

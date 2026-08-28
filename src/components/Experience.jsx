@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import SectionHeading from "./SectionHeading";
 
 const experience = [
     {
@@ -9,13 +10,12 @@ const experience = [
         roles: [
             {
                 title: "Sr. Software Engineer, SCADA",
-                period: "2025 - Present",
-                description: "Contributing to the development of global SCADA software for manufacturing environments. Focused on designing and implementing software architecture for reliable data collection from robots and PLCs using the OPC UA protocol, along with data transmission, processing, and storage leveraging Kafka, APIs, and internal platforms. Also involved in building data visualization tools to monitor and analyze key performance indicators (KPIs)."
+                period: "2025 — Present",
+                description: "Building AI applications for manufacturing, including knowledge-base RAG systems, agentic loops, and agent harnesses. Also contributing to global SCADA software: architecture for reliable data collection from robots and PLCs over OPC UA, plus data transmission, processing, and storage with Kafka, APIs, and internal platforms, and visualization tools for manufacturing KPIs."
             },
             {
                 title: "Software Engineer, SCADA",
-                period: "2023 - 2025",
-                // description: "Contributing to the development of global SCADA software for manufacturing environments. Focused on designing and implementing software architecture for reliable data collection from robots and PLCs using the OPC UA protocol, along with data transmission, processing, and storage leveraging Kafka, APIs, and internal platforms. Also involved in building data visualization tools to monitor and analyze key performance indicators (KPIs)."
+                period: "2023 — 2025",
             }
         ]
     },
@@ -26,7 +26,7 @@ const experience = [
         roles: [
             {
                 title: "Junior Development Engineer",
-                period: "2022 - 2023",
+                period: "2022 — 2023",
                 description: `Built software for underwater satellites (C++/Python), including video streaming, multi-sensor integration and fusion, camera algorithms, GPS/GNSS and navigation stack, and MQTT - ROS2 communication.`
             }
         ]
@@ -38,7 +38,7 @@ const experience = [
         roles: [
             {
                 title: "Research Assistant",
-                period: "2022 - 2022",
+                period: "2022",
                 description: `Developed real-time control, simulation, and motion planning software for a 6-DoF quadruped robot, contributing research, sensor integration, and open-source tools using Python and PyBullet.`,
             }
         ]
@@ -50,24 +50,19 @@ const experience = [
         roles: [
             {
                 title: "Student Software Developer",
-                period: "2021 - 2022",
+                period: "2021 — 2022",
                 description: `Built ROS-based computer vision and ML systems for waste quality assessment, including LSTM prediction, relay control, and node recovery frameworks in Python.`,
             }
         ]
-    }, 
+    },
     {
         company: "Jacobs University Bremen",
         url: "https://www.jacobs-university.de",
         logo: "/personal-portfolio/logos/jacobs_university_logo.jpeg",
         roles: [
-            // {
-            //     title: "Team Lead - RAMI Underwater Marine Robotics Competition",
-            //     period: "2022 - 2022",
-            //     description: `Led a 10-member team in the 2022 RAMI Underwater Robotics Competition, developing autonomous navigation and vision-based mission software (ROS, Python/C++, OpenCV) for the BlueROV2 — winning 3 awards.`,
-            // },
             {
                 title: "Team Lead, Research & Teaching Assistant",
-                period: "2020- 2022",
+                period: "2020 — 2022",
                 description: `Developed software and hardware for robotic systems (BlueROV2, DuckieBots, ESA Spherical Robot) using ROS, Python/C++, and OpenCV, contributing to research, teaching, and leading a team effort that earned awards at the 2022 RAMI Underwater Robotics Competition.`
             }
         ]
@@ -78,131 +73,107 @@ const containerVariants = {
     hidden: {},
     visible: {
         transition: {
-            staggerChildren: 0.15,
-            delayChildren: 0.3,
+            staggerChildren: 0.12,
+            delayChildren: 0.08,
         },
     },
 };
 
 const itemVariants = {
-    hidden: { 
-        opacity: 0, 
-        y: 0
-    },
-    visible: { 
-        opacity: 1, 
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+        opacity: 1,
         y: 0,
-        transition: {
-            duration: 0.4,
-            ease: 'easeOut'
-        }
+        transition: { duration: 0.4, ease: "easeOut" },
     },
 };
 
 const Experience = () => {
     const ref = useRef(null);
     const [isMobile, setIsMobile] = useState(false);
-    
+
     useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-        
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
         checkMobile();
-        window.addEventListener('resize', checkMobile);
-        
-        return () => window.removeEventListener('resize', checkMobile);
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
     }, []);
-    
-    const inView = useInView(ref, { 
-        once: true, 
-        amount: isMobile ? 0.05 : 0.15 
+
+    const inView = useInView(ref, {
+        once: true,
+        amount: 0.05,
     });
 
-    // No animations on mobile to prevent double render
-    const mobileContainerVariants = {
-        hidden: {},
-        visible: {},
-    };
-
-    const mobileItemVariants = {
-        hidden: { opacity: 1 },
-        visible: { opacity: 1 },
-    };
-
-    const currentContainerVariants = isMobile ? mobileContainerVariants : containerVariants;
-    const currentItemVariants = isMobile ? mobileItemVariants : itemVariants;
+    const currentContainerVariants = isMobile ? { hidden: {}, visible: {} } : containerVariants;
+    const currentItemVariants = isMobile
+        ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+        : itemVariants;
 
     return (
-        <section id="experience" ref={ref} className="py-20">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 px-4 sm:px-6">
-                {/* Left: Header */}
+        <section id="experience" ref={ref} className="scroll-mt-24 py-20 md:py-28 px-5 sm:px-6">
+            <div className="max-w-3xl mx-auto">
+                <SectionHeading index="01" title="Experience" />
+
                 <motion.div
-                    className="md:w-1/3 flex flex-col justify-center md:justify-start mb-8 md:mb-0"
-                    initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                    animate={isMobile ? { opacity: 1, y: 0 } : (inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 })}
-                    transition={isMobile ? {} : { duration: 0.6, ease: 'easeOut' }}
-                    style={{ willChange: 'transform, opacity' }}
+                    className="relative flex flex-col"
+                    variants={currentContainerVariants}
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
                 >
-                    <h2 className="text-3xl font-bold text-left md:text-right">
-                        Experience
-                    </h2>
-                </motion.div>
-                {/* Right: Experience Cards with Timeline */}
-                <div className="relative md:w-2/3 flex flex-col gap-6">
-                    {/* Vertical timeline bar */}
-                    <div className="hidden md:block absolute left-4 top-0 h-full w-1 bg-gradient-to-b from-blue-200 via-blue-400 to-blue-200 dark:from-blue-900 dark:via-blue-700 dark:to-blue-900 rounded-full opacity-60 z-0"></div>
-                    <motion.div
-                        className="flex flex-col gap-12 relative z-10"
-                        variants={currentContainerVariants}
-                        initial="hidden"
-                        animate={inView ? "visible" : "hidden"}
-                        style={{ willChange: 'transform, opacity' }}
-                    >
-                        {experience.map((exp, i) => (
-                            <motion.div
-                                key={exp.company}
-                                variants={currentItemVariants}
-                                whileHover={isMobile ? {} : {
-                                    scale: 1.04,
-                                    boxShadow: "0 12px 32px 0 rgba(31, 38, 135, 0.18)",
-                                    transition: { type: "tween", duration: 0.18, ease: "linear" },
-                                }}
-                                className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 flex items-start gap-4 border border-gray-200 dark:border-gray-700 transition-all duration-300"
-                            >
-                                {/* Logo (no circle) */}
-                                {exp.logo && (
-                                    <img
-                                        src={exp.logo}
-                                        alt={`${exp.company} logo`}
-                                        className="flex-shrink-0 w-16 h-16 object-contain"
-                                        style={{ borderRadius: "8px" }}
-                                    />
-                                )}
-                                <div className="flex-1">
-                                    <a
-                                        href={exp.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-xl font-bold text-blue-700 dark:text-blue-400 hover:underline"
-                                    >
-                                        {exp.company}
-                                    </a>
-                                    {/* Multiple roles per company */}
-                                    {exp.roles.map((role, idx) => (
-                                        <div key={idx} className={idx > 0 ? "mt-4 pt-4 border-t border-blue-100 dark:border-gray-700" : "mt-1"}>
-                                            <div className="font-semibold text-gray-700 dark:text-gray-200 text-base">{role.title}</div>
-                                            <div className="text-gray-500 dark:text-gray-400 text-sm mb-2">{role.period}</div>
-                                            <div className="whitespace-pre-line text-gray-800 dark:text-gray-300 text-[15px] leading-relaxed">
-                                                {role.description}
+                    <div className="absolute left-[23px] top-3 bottom-3 w-px bg-line hidden sm:block" />
+
+                    {experience.map((exp) => (
+                        <motion.article
+                            key={exp.company}
+                            variants={currentItemVariants}
+                            className="relative sm:pl-16 pb-12 last:pb-0 group"
+                        >
+                            <div className="hidden sm:block absolute left-[18px] top-5 h-3 w-3 rounded-full bg-page border-2 border-accent z-10 group-hover:bg-accent transition-colors" />
+
+                            <div className="rounded-2xl border border-line bg-surface p-5 sm:p-6 transition-colors duration-300 hover:border-accent/40">
+                                <div className="flex items-start gap-4">
+                                    {exp.logo && (
+                                        <img
+                                            src={exp.logo}
+                                            alt=""
+                                            className="flex-shrink-0 w-12 h-12 object-contain rounded-lg bg-page ring-1 ring-line"
+                                        />
+                                    )}
+                                    <div className="flex-1 min-w-0">
+                                        <a
+                                            href={exp.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-lg font-semibold text-ink hover:text-accent transition-colors"
+                                        >
+                                            {exp.company}
+                                        </a>
+                                        {exp.roles.map((role, idx) => (
+                                            <div
+                                                key={idx}
+                                                className={idx > 0 ? "mt-4 pt-4 border-t border-line" : "mt-1"}
+                                            >
+                                                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5 sm:gap-4">
+                                                    <h3 className="font-medium text-ink">
+                                                        {role.title}
+                                                    </h3>
+                                                    <span className="text-muted text-sm shrink-0 tabular-nums">
+                                                        {role.period}
+                                                    </span>
+                                                </div>
+                                                {role.description && (
+                                                    <p className="mt-2 text-muted text-[15px] leading-relaxed">
+                                                        {role.description}
+                                                    </p>
+                                                )}
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
+                                    </div>
                                 </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
+                            </div>
+                        </motion.article>
+                    ))}
+                </motion.div>
             </div>
         </section>
     );

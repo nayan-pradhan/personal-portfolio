@@ -1,6 +1,6 @@
-
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import SectionHeading from "./SectionHeading";
 
 const projects = [
     {
@@ -144,12 +144,12 @@ const containerVariants = {
 };
 
 const itemVariants = {
-    hidden: { 
-        opacity: 0, 
-        y: 0
+    hidden: {
+        opacity: 0,
+        y: 16
     },
-    visible: { 
-        opacity: 1, 
+    visible: {
+        opacity: 1,
         y: 0,
         transition: {
             duration: 0.4,
@@ -192,131 +192,107 @@ const Projects = () => {
     const currentContainerVariants = isMobile ? mobileContainerVariants : containerVariants;
     const currentItemVariants = isMobile ? mobileItemVariants : itemVariants;
 
+    const linkClass =
+        "inline-flex items-center gap-1.5 px-3 py-1.5 border border-line text-muted rounded-full hover:border-accent hover:text-accent transition-colors text-sm";
+
     return (
-        <section id="projects" ref={ref} className="py-20">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 px-4 sm:px-6">
-                {/* Left: Header */}
+        <section id="projects" ref={ref} className="scroll-mt-24 py-20 md:py-28 px-5 sm:px-6">
+            <div className="max-w-3xl mx-auto">
+                <SectionHeading index="02" title="Projects" />
                 <motion.div
-                    className="md:w-1/3 flex flex-col justify-center md:justify-start mb-8 md:mb-0"
-                    initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                    animate={isMobile ? { opacity: 1, y: 0 } : (inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 })}
-                    transition={isMobile ? {} : { duration: 0.6, ease: 'easeOut' }}
-                    style={{ willChange: 'transform, opacity' }}
+                    className="flex flex-col gap-5"
+                    variants={currentContainerVariants}
+                    initial="hidden"
+                    animate={inView ? "visible" : "hidden"}
                 >
-                    <h2 className="text-3xl font-bold text-left md:text-right">
-                        Projects
-                    </h2>
-                </motion.div>
-                {/* Right: Project Cards */}
-                <div className="relative md:w-2/3 flex flex-col gap-6">
-                    {/* Vertical timeline bar */}
-                    <div className="hidden md:block absolute left-4 top-0 h-full w-1 bg-gradient-to-b from-green-200 via-green-400 to-green-200 dark:from-green-900 dark:via-green-700 dark:to-green-900 rounded-full opacity-60 z-0"></div>
-                    <motion.div
-                        className="flex flex-col gap-12 relative z-10"
-                        variants={currentContainerVariants}
-                        initial="hidden"
-                        animate={inView ? "visible" : "hidden"}
-                        style={{ willChange: 'transform, opacity' }}
-                    >
-                        {projects.map((project, i) => (
-                            <motion.div
-                                key={project.title}
-                                variants={currentItemVariants}
-                                whileHover={isMobile ? {} : {
-                                    scale: 1.04,
-                                    boxShadow: "0 12px 32px 0 rgba(34, 197, 94, 0.18)",
-                                    transition: { type: "tween", duration: 0.18, ease: "linear" },
-                                }}
-                                className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 transition-all duration-300"
-                            >
-                                <div className="flex flex-col gap-4">
-                                    {/* Project Header */}
-                                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                                            {project.title}
-                                        </h3>
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.url && (
-                                                <a
-                                                    href={project.url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm font-medium"
-                                                >
-                                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                                    </svg>
-                                                    Code
-                                                </a>
-                                            )}
-                                            {project.videoUrl && (
-                                                <a
-                                                    href={project.videoUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors text-sm font-medium"
-                                                >
-                                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                                        <path d="M8 5v14l11-7z"/>
-                                                    </svg>
-                                                    Video
-                                                </a>
-                                            )}
-                                            {project.researchPaperUrl && (
-                                                <a
-                                                    href={project.researchPaperUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors text-sm font-medium"
-                                                >
-                                                    <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor">
-                                                        <path d="M128 128C128 92.7 156.7 64 192 64L341.5 64C358.5 64 374.8 70.7 386.8 82.7L493.3 189.3C505.3 201.3 512 217.6 512 234.6L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM336 122.5L336 216C336 229.3 346.7 240 360 240L453.5 240L336 122.5zM248 320C234.7 320 224 330.7 224 344C224 357.3 234.7 368 248 368L392 368C405.3 368 416 357.3 416 344C416 330.7 405.3 320 392 320L248 320zM248 416C234.7 416 224 426.7 224 440C224 453.3 234.7 464 248 464L392 464C405.3 464 416 453.3 416 440C416 426.7 405.3 416 392 416L248 416z"/>
-                                                    </svg>
-                                                    Paper
-                                                </a>
-                                            )}
-                                            {project.demoUrl && (
-                                                <a
-                                                    href={project.demoUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors text-sm font-medium"
-                                                >
-                                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                                        <path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/>
-                                                    </svg>
-                                                    Demo
-                                                </a>
-                                            )}
-                                        </div>
+                    {projects.map((project) => (
+                        <motion.article
+                            key={project.title}
+                            variants={currentItemVariants}
+                            className="relative rounded-2xl border border-line bg-surface p-5 sm:p-6 transition-colors duration-300 hover:border-accent/40"
+                        >
+                            <div className="flex flex-col gap-4">
+                                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                                    <h3 className="text-xl font-semibold text-ink leading-snug">
+                                        {project.title}
+                                    </h3>
+                                    <div className="flex flex-wrap gap-2 shrink-0">
+                                        {project.url && (
+                                            <a
+                                                href={project.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={linkClass}
+                                            >
+                                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                                </svg>
+                                                Code
+                                            </a>
+                                        )}
+                                        {project.videoUrl && (
+                                            <a
+                                                href={project.videoUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={linkClass}
+                                            >
+                                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M8 5v14l11-7z"/>
+                                                </svg>
+                                                Video
+                                            </a>
+                                        )}
+                                        {project.researchPaperUrl && (
+                                            <a
+                                                href={project.researchPaperUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={linkClass}
+                                            >
+                                                <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor">
+                                                    <path d="M128 128C128 92.7 156.7 64 192 64L341.5 64C358.5 64 374.8 70.7 386.8 82.7L493.3 189.3C505.3 201.3 512 217.6 512 234.6L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM336 122.5L336 216C336 229.3 346.7 240 360 240L453.5 240L336 122.5zM248 320C234.7 320 224 330.7 224 344C224 357.3 234.7 368 248 368L392 368C405.3 368 416 357.3 416 344C416 330.7 405.3 320 392 320L248 320zM248 416C234.7 416 224 426.7 224 440C224 453.3 234.7 464 248 464L392 464C405.3 464 416 453.3 416 440C416 426.7 405.3 416 392 416L248 416z"/>
+                                                </svg>
+                                                Paper
+                                            </a>
+                                        )}
+                                        {project.demoUrl && (
+                                            <a
+                                                href={project.demoUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={linkClass}
+                                            >
+                                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M14.6 16.6l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4zm-5.2 0L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4z"/>
+                                                </svg>
+                                                Demo
+                                            </a>
+                                        )}
                                     </div>
-
-                                    {/* Project Description */}
-                                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                        {project.description}
-                                    </p>
-
-                                    {/* Tech Stack */}
-                                    {project.stack && project.stack.length > 0 && (
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.stack.map((tech, idx) => (
-                                                <div
-                                                    key={idx}
-                                                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm"
-                                                >
-                                                    <div className="text-green-600 dark:text-green-400">
-                                                        {tech.icon}
-                                                    </div>
-                                                    {tech.name}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
                                 </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
+
+                                <p className="text-muted leading-relaxed">
+                                    {project.description}
+                                </p>
+
+                                {project.stack && project.stack.length > 0 && (
+                                    <div className="flex flex-wrap gap-2">
+                                        {project.stack.map((tech, idx) => (
+                                            <div
+                                                key={idx}
+                                                className="inline-flex items-center gap-2 px-3 py-1.5 bg-page border border-line text-ink rounded-full text-sm"
+                                            >
+                                                {tech.icon}
+                                                {tech.name}
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </motion.article>
+                    ))}
+                </motion.div>
             </div>
         </section>
     );
